@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+      background: linear-gradient(180deg, rgba(10, 10, 50, 1) 0%, rgba(40, 40, 70, 1) 50%, rgba(10, 10, 50, 1) 100%);
+    }
+    .bounce2 {
+      animation: bounce2 2s ease infinite;
+    }
+    @keyframes bounce2 {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+    body {
+      background: #0D1B2A;
+      color: #E0E1DD;
+      font-family: 'Poppins', sans-serif;
+    }
+    .card {
+      background: rgba(18, 29, 48, 0.9);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+<body class="gradient-background text-white">
+  <div id="question1" class="flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <h2 class="text-4xl font-bold italic text-pink-400 my-4">Will you forgive me for what I did?</h2>
+      <p class="text-xl font-semibold text-pink-300">I love you… and I mean that with everything I am plss say yes</p>
+
+      <div class="flex gap-4 pt-5 items-center">
+        <button id="yes1" class="bounce2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-6 rounded-md transition">Okay bby I forgive you</button>
+        <button id="no1" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-md transition">No I won't</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="question2" class="hidden flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <h2 class="text-4xl font-bold italic text-pink-400 my-4">Awww you said yes! I knew you would 😭💖</h2>
+      <p class="text-xl font-semibold text-pink-300">I love you sooo much bby. Thank you, you're the best.  
+      You said yes cuz you think I'm a good boyfriend, right?</p>
+
+      <div class="flex gap-4 pt-5 items-center">
+        <button id="yes2" class="bounce2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-6 rounded-md transition">Yes</button>
+        <button id="no2" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-md transition">No</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="question3" class="hidden flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <h2 class="text-4xl font-bold italic text-pink-400 my-4">Do you wanna go on a date with me??</h2>
+      <p class="text-xl font-semibold text-pink-300">My princess 💕👑</p>
+
+      <div class="flex gap-4 pt-5 items-center">
+        <button id="yes3" class="bounce2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-6 rounded-md transition">Yes</button>
+        <button id="no3" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-md transition">NO Absolutely not</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="finalPage" class="hidden flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-6 max-w-xl">
+      <h2 class="text-4xl font-bold text-pink-400 text-center mb-6">YAYYYY! 🎉🎉🎉</h2>
+      <p class="text-base sm:text-lg text-center text-white font-medium whitespace-pre-line leading-relaxed">
+        hey I know you're angry and maybe I messed up again but I just wanna say this
+
+        I love you more than words could ever explain like fr you’re everything to me
+        you make my world brighter you make it worth living and I’m so damn happy to have you in my life
+        you don’t even know how special you are
+        you’re the reason I smile without even trying you’re the reason I believe in love
+
+        you make every other girl look like nothing to me
+        you’re my type my only type my everything
+        no one even come close you make every girl out there look invisible
+        you’re not just pretty you’re beautiful in every possible way
+        my beautiful princess the one I adore the one I’d choose in every lifetime
+
+        I don’t want a world without you I need you
+        you’re not just someone I love you’re someone I need
+        you’re a part of me now I feel empty without you
+        you’re the only one who makes my heart feel alive
+        and I never wanna lose that never wanna lose you
+
+        so even if you’re angry I still love you
+        I’ll wait I’ll listen I’ll fix it
+        but please don’t forget how much I love you
+        how much I need you
+      </p>
+
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf75ANSM3FEVKWwJF6sVtC909Sm5kK2jykxesMTtLjluE2VoQ/viewform?usp=dialog" target="_blank" class="mt-6 inline-block bg-pink-500 hover:bg-pink-400 text-white font-bold py-2 px-6 rounded-lg transition">
+        Click here, my love 💗
+      </a>
+    </div>
+  </div>
+
+  <script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+
+    function setupYesNo(yesBtnId, noBtnId, currentSectionId, nextSectionId) {
+      const yesBtn = document.getElementById(yesBtnId);
+      const noBtn = document.getElementById(noBtnId);
+      const current = document.getElementById(currentSectionId);
+      const next = document.getElementById(nextSectionId);
+      let noClickCount = 0;
+      let buttonHeight = 48;
+      let buttonWidth = 80;
+      let fontSize = 20;
+
+      noBtn.addEventListener('click', function() {
+        if (noClickCount < 5) {
+          noClickCount++;
+          buttonHeight += 35;
+          buttonWidth += 35;
+          fontSize += 25;
+          yesBtn.style.height = `${buttonHeight}px`;
+          yesBtn.style.width = `${buttonWidth}px`;
+          yesBtn.style.fontSize = `${fontSize}px`;
+          noBtn.textContent = ["No", "Are you sure?", "Pookie please", "Don't do this to me :(", "You're breaking my heart", "I'm gonna cry..."][noClickCount];
+        }
+      });
+
+      yesBtn.addEventListener('click', () => {
+        confetti();
+        current.classList.add('hidden');
+        next.classList.remove('hidden');
+      });
+    }
+
+    const yes1 = document.getElementById('yes1');
+    const no1 = document.getElementById('no1');
+    const q1 = document.getElementById('question1');
+    const q2 = document.getElementById('question2');
+
+    no1.addEventListener('click', () => {
+      // Move to a random position within the container
+      const x = Math.floor(Math.random() * 200) - 100;
+      const y = Math.floor(Math.random() * 200) - 100;
+      no1.style.position = 'relative';
+      no1.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    yes1.addEventListener('click', () => {
+      confetti();
+      q1.classList.add('hidden');
+      q2.classList.remove('hidden');
+    });
+
+    const yes2b = document.getElementById('yes2');
+    const no2b = document.getElementById('no2');
+    const q3 = document.getElementById('question3');
+
+    let yes2CloneCreated = false;
+
+    no2.addEventListener('click', () => {
+      no2.classList.add('hidden');
+
+      if (!yes2CloneCreated) {
+        const yes2Clone = yes2b.cloneNode(true);
+        yes2Clone.id = 'yes2-clone';
+        yes2b.parentElement.insertBefore(yes2Clone, no2b);
+
+        [yes2b, yes2Clone].forEach(btn => {
+          btn.addEventListener('click', () => {
+            confetti();
+            q2.classList.add('hidden');
+            q3.classList.remove('hidden');
+          });
+        });
+
+        yes2CloneCreated = true;
+      }
+    });
+
+    setupYesNo('yes3', 'no3', 'question3', 'finalPage');
+  </script>
+</body>
+</html>
